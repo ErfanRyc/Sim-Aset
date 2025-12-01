@@ -5,7 +5,6 @@ require 'function.php';
 $error = "";
 $success = "";
 
-// Jika sudah login, langsung ke dashboard
 if (isset($_SESSION['log']) && !isset($_POST['login'])) {
     header('location:dashboard.php');
     exit;
@@ -16,23 +15,20 @@ if (isset($_POST['login'])) {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Ambil dari tabel user (bukan login lagi)
     $cekdatabase = mysqli_query($conn, "SELECT * FROM user WHERE email='$email'");
     $data = mysqli_fetch_assoc($cekdatabase);
 
     if ($data) {
         if (password_verify($password, $data['password'])) {
-            // Simpan session login
             $_SESSION['log'] = true;
             $_SESSION['email'] = $data['email'];
             $_SESSION['username'] = $data['username'];
-            $_SESSION['role'] = $data['role']; // simpan role
+            $_SESSION['role'] = $data['role']; 
 
-            // Arahkan berdasarkan role
             if ($data['role'] == 'Admin') {
-                header('location:dashboard.php'); // akses penuh
+                header('location:dashboard.php');
             } else {
-                header('location:dashboard.php'); // user biasa, bisa dibatasi di dashboard
+                header('location:index.php'); 
             }
             exit;
         } else {
@@ -76,7 +72,6 @@ if (isset($_POST['login'])) {
     </div>
     <div class="card-body">
 
-      <!-- ALERT -->
       <?php if($error != ""): ?>
         <div class="alert alert-danger text-center" role="alert">
           <?= $error; ?>
@@ -88,7 +83,6 @@ if (isset($_POST['login'])) {
         </div>
       <?php endif; ?>
 
-      <!-- FORM LOGIN -->
       <form method="post">
         <div class="form-group">
           <label class="small mb-1" for="inputEmailAddress">Email</label>
@@ -105,7 +99,6 @@ if (isset($_POST['login'])) {
     </div>
   </div>
 
-  <!-- Script -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script>

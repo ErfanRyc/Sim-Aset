@@ -175,13 +175,11 @@ $role = $_SESSION['role'];
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                     
-                                                            <!-- Modal Header -->
                                                             <div class="modal-header bg-danger text-white">
                                                                 <h4 class="modal-title">Hapus User</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             
-                                                            <!-- Modal body -->
                                                             <form method="post">
                                                             <div class="modal-body">
                                                                 Apakah anda yakin untuk menghapus user <?=$username;?>?
@@ -191,7 +189,6 @@ $role = $_SESSION['role'];
                                                                 <button type="submit" class=" btn btn-danger" name="hapususer">Hapus</button>
                                                             </div>
                                                             </form>
-                                                            <!-- Modal footer -->
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
                                                             </div>

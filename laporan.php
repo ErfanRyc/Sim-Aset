@@ -2,18 +2,15 @@
 require 'function.php';
 require 'cek.php';
 
-// Validasi tipe transaksi
 $allowed_types = ['', 'masuk', 'keluar'];
 $tipe = isset($_GET['tipe']) && in_array($_GET['tipe'], $allowed_types) 
         ? $_GET['tipe'] 
         : '';
 
 
-// Validasi bulan dan tahun
 $bulan = !empty($_GET['bulan']) ? (int)$_GET['bulan'] : '';
 $tahun = !empty($_GET['tahun']) ? (int)$_GET['tahun'] : '';
 
-// Tentukan query final dan kolom berdasarkan tipe
 if ($tipe === 'masuk') {
     $queryFinal = "SELECT 
                        bm.tanggal, 
@@ -62,7 +59,7 @@ if ($tipe === 'masuk') {
     $columns = ['Tanggal', 'Nama Barang', 'Satuan', 'Jumlah Keluar', 'Keterangan Keluar'];
     $data_keys = ['tanggal', 'namabarang', 'satuan', 'jumlah_keluar', 'keterangan_keluar'];
 
-} else { // Semua
+} else { 
     $queryMasuk = "SELECT 
                        bm.tanggal, 
                        b.namabarang, 

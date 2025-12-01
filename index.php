@@ -32,7 +32,7 @@ while ($row = mysqli_fetch_assoc($ambildatabase)) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -97,8 +97,14 @@ while ($row = mysqli_fetch_assoc($ambildatabase)) {
                                         <td><?= htmlspecialchars($item['tahun']); ?></td>
                                         <td><?= htmlspecialchars($item['sisa']); ?></td>
                                         <td><?= htmlspecialchars($item['satuan']); ?></td>
-                                        <td><?= "Rp. " . number_format((float)$item['hargasatuan'], 0, ',', '.'); ?></td>
-                                        <td><?= "Rp. " . number_format((float)$item['nilaipersediaan'], 0, ',', '.'); ?></td>
+                                        <td data-order="<?= $item['hargasatuan']; ?>">
+                                            <?= "Rp. " . number_format((float)$item['hargasatuan'], 0, ',', '.'); ?>
+                                        </td>
+
+                                        <td data-order="<?= $item['nilaipersediaan']; ?>">
+                                            <?= "Rp. " . number_format((float)$item['nilaipersediaan'], 0, ',', '.'); ?>
+                                        </td>
+
                                         <td><?= htmlspecialchars($item['keterangan']); ?></td>
                                         <td class="d-flex justify-content-center" style="gap: 2px">
                                             <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail<?= $item['id_detail']; ?>">

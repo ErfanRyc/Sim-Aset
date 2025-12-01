@@ -12,9 +12,16 @@ $role = $_SESSION['role'] ?? 'User';
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
+                <br>
+                <?php if ($role === 'Admin'): ?>
+                <?php echo '<li class="nav-header" style="padding-left: 10px"><b>Akses Admin</b></li>'; ?>
+                <?php endif; ?>
+
+                <?php if ($role === 'Admin'): ?>
                 <a class="nav-link" href="dashboard.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>Dashboard
                 </a>
+                <?php endif; ?>
 
                 <?php if ($role === 'Admin'): ?>
                 <a class="nav-link" href="user.php">
@@ -27,6 +34,8 @@ $role = $_SESSION['role'] ?? 'User';
                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></i></div>Satuan
                 </a>
                 <?php endif; ?>
+                
+                <?php echo '<li class="nav-header" style="padding-left: 10px"><b>Data Barang</b></li>'; ?>
 
                 <a class="nav-link" href="index.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>Daftar  Barang

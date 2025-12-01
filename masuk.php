@@ -42,7 +42,6 @@ $role = $_SESSION['role'];
 
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <!-- Tombol Tambah Barang Masuk (kiri) -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">
                             <i class="fas fa-plus"></i> Tambah Barang Masuk
                         </button>
@@ -216,7 +215,6 @@ $role = $_SESSION['role'];
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Ambil data barang dari PHP ke JavaScript
     const barangData = [
         <?php
         $barang = mysqli_query($conn, "
